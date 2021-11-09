@@ -34,7 +34,7 @@ public class menu extends AppCompatActivity{
             Log.d("Click", "menu");
             if((id = view.getId()) == R.id.menu1) {
                 Log.d("Click", "menu1");
-                Intent intent = new Intent(menu.this, unit_word.class);
+                Intent intent = new Intent(menu.this, word_day.class);
                 startActivity(intent);
             }
             else if(id == R.id.menu2)

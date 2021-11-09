@@ -8,6 +8,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyWord"></application>
+        android:theme="@style/Theme.MyWord">
+        <activity
+            android:name="com.example.myword.word_day"
+            android:exported="true" />
+        <activity
+            android:name="com.example.myword.search"
+            android:exported="true" />
+        <activity
+            android:name="com.example.myword.unit_word"
+            android:exported="true" />
+        <activity
+            android:name="com.example.myword.word"
+            android:exported="true" />
+        <activity
+            android:name="com.example.myword.menu"
+            android:exported="true" />
+    </application>
 
 </manifest>
