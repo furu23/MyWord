@@ -15,18 +15,7 @@ public class unit_word extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unit_word);
-        LinearLayout a = findViewById(R.id.wrong1);
 
     }
-    
-    private class MyTouchListner implements View.OnTouchListener
-    {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            Log.d("buttons", "onTouch: button");
-            return true;
-        }
-    }
 
-    
 }

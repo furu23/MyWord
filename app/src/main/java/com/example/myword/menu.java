@@ -30,18 +30,18 @@ public class menu extends AppCompatActivity{
     {
         @Override
         public boolean onTouch(View view, MotionEvent event) {
-            Log.d("Click", "menu");
-            if(view.getId() == R.id.menu1) {
+            if(view.getId() == R.id.menu1) {        //단어장으로 연결
                 Log.d("Menu", "Menu_word_day");
-                Intent intent = new Intent(menu.this, word_day.class);
+                Intent intent = new Intent(getApplicationContext(), word_day.class);
                 startActivity(intent);
             }
             else if(view.getId() == R.id.menu2)
                 Log.d("Menu", "Menu_quiz");    //단어 퀴즈 액티비티에 연결
             else if(view.getId() == R.id.menu3) {
-                Log.d("Menu", "Menu_search");
-                Intent intent = new Intent(menu.this, search.class);
+                Log.d("Menu", "Menu_search");       //검색 액티비티로 연결
+                Intent intent = new Intent(getApplicationContext(), search.class);
                 startActivity(intent);
+
             }
             return false;
         }

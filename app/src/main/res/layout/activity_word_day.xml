@@ -9,6 +9,7 @@
 
         <TableRow>
             <RelativeLayout
+                android:id="@+id/day1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="20dp"
@@ -35,6 +36,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/day2"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="20dp"
@@ -63,6 +65,7 @@
 
         <TableRow>
             <RelativeLayout
+                android:id="@+id/day3"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="20dp"
@@ -89,6 +92,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/day4"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="20dp"
@@ -117,6 +121,7 @@
 
         <TableRow>
             <RelativeLayout
+                android:id="@+id/day5"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="20dp"
@@ -143,6 +148,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/day6"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="20dp"
@@ -171,6 +177,7 @@
 
         <TableRow>
             <RelativeLayout
+                android:id="@+id/day7"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="20dp"
@@ -197,6 +204,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/day8"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="20dp"
