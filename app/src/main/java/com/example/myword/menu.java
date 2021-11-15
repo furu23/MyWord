@@ -1,50 +1,75 @@
 package com.example.myword;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RelativeLayout;
+import java.util.Locale;
 
 public class menu extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sp = getSharedPreferences("pref", MODE_PRIVATE);
+        if (sp.getBoolean("INIT", true)) {
+            Log.i("INFO_WORD", "First application start");
+            DBHelper helper = new DBHelper(this);
+            SQLiteDatabase db = helper.getWritableDatabase();
+
+            Resources res = getResources();
+            String[] input = res.getStringArray(R.array.start_data);
+
+            for(int i = 0; i < input.length; i++) {
+                db.execSQL("insert into tb_word (unit, day, english, sound, meaning) values (?, ?, ?, ?, ?)",
+                        (String.format(Locale.KOREA, "Unit%d,Day%d," , i/2 + 1, i/3 + 1)
+                                 + input[i]).split(","));
+            }
+            db.close();
+            sp.edit().putBoolean("INIT", false).apply();
+        }
+
         setContentView(R.layout.menuxml);
-
-        RelativeLayout menu1 = findViewById(R.id.menu1);
-        RelativeLayout menu2 = findViewById(R.id.menu2);
-        RelativeLayout menu3 = findViewById(R.id.menu3);
-
-        menu1.setOnTouchListener(new menuTouchListner());
-        menu2.setOnTouchListener(new menuTouchListner());
-        menu3.setOnTouchListener(new menuTouchListner());
-
     }
 
-    private class menuTouchListner implements View.OnTouchListener
+    public void menuClickListner(View v)
     {
-        @Override
-        public boolean onTouch(View view, MotionEvent event) {
-            if(view.getId() == R.id.menu1) {        //단어장으로 연결
-                Log.d("Menu", "Menu_word_day");
-                Intent intent = new Intent(getApplicationContext(), word_day.class);
-                startActivity(intent);
-            }
-            else if(view.getId() == R.id.menu2)
-                Log.d("Menu", "Menu_quiz");    //단어 퀴즈 액티비티에 연결
-            else if(view.getId() == R.id.menu3) {
-                Log.d("Menu", "Menu_search");       //검색 액티비티로 연결
-                Intent intent = new Intent(getApplicationContext(), search.class);
-                startActivity(intent);
+        if(v.getId() == R.id.menu1)
+            startActivity(new Intent(getApplicationContext(), unit_word.class));
+        else if (v.getId() == R.id.menu2)
+            ;
+        else if (v.getId() == R.id.menu3)
+            startActivity(new Intent(getApplicationContext(), search.class));
+    }
 
+    public static class DBHelper extends SQLiteOpenHelper {
+        public static final int DATABASE_VERSION = 1;
+
+        public DBHelper(Context context) {
+            super(context, "worddb", null, DATABASE_VERSION);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            String wordSQL = "create table tb_word " +
+                    "(_id integer primary key autoincrement, " +
+                    "unit, day, english, sound, meaning)";
+            db.execSQL(wordSQL);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            if (newVersion == DATABASE_VERSION) {
+                db.execSQL("drop table tb_word");
+                onCreate(db);
             }
-            return false;
         }
     }
-
 }

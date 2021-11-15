@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -11,10 +12,11 @@
         android:background="#888"/>
 
     <RelativeLayout
+        android:id="@+id/menu1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="5dp"
-        android:id="@+id/menu1">
+        android:onClick="menuClickListner" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,14 +24,47 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:textSize="24sp"
-            android:text="단어장"/>
+            android:text="@string/menu1"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/arrow" />
+            android:src="@drawable/arrow"
+            tools:ignore="ContentDescription"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#AAA"
+        android:layout_marginHorizontal="10dp"/>
+
+    <RelativeLayout
+        android:id="@+id/menu2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="5dp"
+        android:onClick="menuClickListner">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:textSize="24sp"
+            android:text="@string/menu2"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/arrow"
+            tools:ignore="ContentDescription" />
+
     </RelativeLayout>
 
     <View
@@ -42,7 +77,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="5dp"
-        android:id="@+id/menu2">
+        android:id="@+id/menu3"
+        android:onClick="menuClickListner">
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,42 +86,16 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:textSize="24sp"
-            android:text="단어퀴즈"/>
+            android:text="@string/menu3"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/arrow" />
-    </RelativeLayout>
+            android:src="@drawable/arrow"
+            tools:ignore="ContentDescription" />
 
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:background="#AAA"
-        android:layout_marginHorizontal="10dp"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:padding="5dp"
-        android:id="@+id/menu3">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:textSize="24sp"
-            android:text="검색"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/arrow"/>
     </RelativeLayout>
 
     <View
@@ -93,4 +103,5 @@
         android:layout_height="0.5dp"
         android:background="#000"
         android:layout_marginHorizontal="10dp"/>
+
 </LinearLayout>

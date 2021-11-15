@@ -16,7 +16,8 @@
                 android:layout_marginStart="30dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/nemo2">
+                android:background="@drawable/nemo2"
+                android:onClick="dayClickListner">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="30dp"
-                android:background="@drawable/nemo2">
+                android:background="@drawable/nemo2"
+                android:onClick="dayClickListner">
 
                 <TextView
                     android:layout_width="wrap_content"

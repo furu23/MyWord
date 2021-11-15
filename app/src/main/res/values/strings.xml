@@ -1,4 +1,14 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MyWord</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="start_data">
+        <item tools:ignore="Typos">english1,sound1,meaning1</item>
+        <item tools:ignore="Typos">english2,sound2,meaning2</item>
+        <item tools:ignore="Typos">english3,sound3,meaning3</item>
+        <item tools:ignore="Typos">english4,sound4,meaning4</item>
+        <item tools:ignore="Typos">english5,sound5,meaning5</item>
+    </string-array>
+    <string name="menu1">단어장</string>
+    <string name="menu2">단어 퀴즈</string>
+    <string name="menu3">검색</string>
 </resources>
