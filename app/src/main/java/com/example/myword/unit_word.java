@@ -35,7 +35,6 @@ public class unit_word extends AppCompatActivity {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         ));
-
         scroll.addView(linear);
 
 
@@ -45,8 +44,7 @@ public class unit_word extends AppCompatActivity {
 
         int i = 1;
         while(cursor.moveToNext())
-            linear.addView(makeUnit(i++));
-
+            linear.addView(makeUnit(i++));      //유닛 추가
 
         setContentView(scroll);
         cursor.close();

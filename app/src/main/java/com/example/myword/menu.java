@@ -20,7 +20,7 @@ public class menu extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sp = getSharedPreferences("pref", MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("pref", MODE_PRIVATE);      //첫 실행에만 DB 생성
         if (sp.getBoolean("INIT", true)) {
             Log.i("INFO_WORD", "First application start");
             DBHelper helper = new DBHelper(this);
@@ -36,7 +36,6 @@ public class menu extends AppCompatActivity{
             }
             sp.edit().putBoolean("INIT", false).apply();
         }
-
         setContentView(R.layout.menuxml);
     }
 

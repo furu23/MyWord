@@ -30,13 +30,13 @@ public class word extends AppCompatActivity implements AdapterView.OnItemClickLi
         menu.DBHelper helper = new menu.DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
 
-        String where = String.format(Locale.KOREA, "where day == '%s' ", "Day" + extra);
+        String where = String.format(Locale.KOREA, "where day == '%s' ", "Day" + extra);    //db에서 단어내용 가져옴
         Cursor cursor = db.rawQuery("select _id, english, sound, meaning " +
                 "from tb_word " +
                 where +
                 "order by _id asc", null);
 
-        CursorAdapter cursorAdapter = new SimpleCursorAdapter(
+        CursorAdapter cursorAdapter = new SimpleCursorAdapter(          //어댑터 생성
                 this,
                 R.layout.word_sub,
                 cursor,
@@ -52,6 +52,5 @@ public class word extends AppCompatActivity implements AdapterView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
     }
 }
