@@ -7,8 +7,24 @@
         <item tools:ignore="Typos">english3,sound3,meaning3</item>
         <item tools:ignore="Typos">english4,sound4,meaning4</item>
         <item tools:ignore="Typos">english5,sound5,meaning5</item>
+        <item tools:ignore="Typos">english6,sound6,meaning6</item>
+        <item tools:ignore="Typos">english7,sound7,meaning7</item>
+        <item tools:ignore="Typos">english8,sound8,meaning8</item>
+        <item tools:ignore="Typos">english9,sound9,meaning9</item>
+        <item tools:ignore="Typos">english10,sound10,meaning10</item>
+        <item tools:ignore="Typos">english11,sound11,meaning11</item>
+        <item tools:ignore="Typos">english12,sound12,meaning12</item>
+        <item tools:ignore="Typos">english13,sound13,meaning13</item>
+        <item tools:ignore="Typos">english14,sound14,meaning14</item>
+        <item tools:ignore="Typos">english15,sound15,meaning15</item>
+        <item tools:ignore="Typos">english16,sound16,meaning16</item>
+        <item tools:ignore="Typos">english17,sound17,meaning17</item>
+        <item tools:ignore="Typos">english18,sound18,meaning18</item>
+        <item tools:ignore="Typos">english19,sound19,meaning19</item>
+        <item tools:ignore="Typos">english20,sound20,meaning20</item>
     </string-array>
     <string name="menu1">단어장</string>
     <string name="menu2">단어 퀴즈</string>
     <string name="menu3">검색</string>
+    <string name="day">day</string>
 </resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_marginVertical="20dp"
+    android:layout_marginStart="30dp"
+    android:layout_weight="1"
+    android:layout_marginEnd="20dp"
+    android:background="@drawable/nemo2" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#AAF"
+        android:layout_margin="15dp"
+        android:text="@string/day"/>
+
+    <TextView
+        android:id="@+id/day_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

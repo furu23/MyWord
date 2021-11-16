@@ -13,6 +13,8 @@ import android.view.View;
 import java.util.Locale;
 
 public class menu extends AppCompatActivity{
+    public static final int UNIT = 4;
+    public static final int DAY = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +31,16 @@ public class menu extends AppCompatActivity{
 
             for(int i = 0; i < input.length; i++) {
                 db.execSQL("insert into tb_word (unit, day, english, sound, meaning) values (?, ?, ?, ?, ?)",
-                        (String.format(Locale.KOREA, "Unit%d,Day%d," , i/2 + 1, i/3 + 1)
+                        (String.format(Locale.KOREA, "Unit%d,Day%d," , i/UNIT + 1, i/ DAY + 1)
                                  + input[i]).split(","));
             }
-            db.close();
             sp.edit().putBoolean("INIT", false).apply();
         }
 
         setContentView(R.layout.menuxml);
     }
 
-    public void menuClickListner(View v)
+    public void menuClickListener(View v)
     {
         if(v.getId() == R.id.menu1)
             startActivity(new Intent(getApplicationContext(), unit_word.class));
@@ -53,7 +54,7 @@ public class menu extends AppCompatActivity{
         public static final int DATABASE_VERSION = 1;
 
         public DBHelper(Context context) {
-            super(context, "worddb", null, DATABASE_VERSION);
+            super(context, "wordDB", null, DATABASE_VERSION);
         }
 
         @Override

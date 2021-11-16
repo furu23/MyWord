@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/nemo"
+    android:visibility="visible">
+
+    <TextView
+        android:id="@+id/word_English"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/word_Meaning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/word_English"
+        android:layout_below="@+id/word_English"
+        android:layout_marginTop="10dp"
+        android:textColor="#AA9"/>
+
+    <ImageView
+        android:id="@+id/arrow_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/arrow"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sound"
+        android:id="@+id/sound_word1"
+        android:layout_toStartOf="@id/arrow_word"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/star_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/star"
+        android:layout_toStartOf="@+id/sound_word1"
+        android:layout_alignBottom="@id/sound_word1"
+        android:layout_marginStart="10dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/change_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/change"
+        android:layout_toStartOf="@+id/star_word"
+        android:layout_alignBottom="@+id/star_word"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

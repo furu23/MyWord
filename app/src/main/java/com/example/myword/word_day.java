@@ -2,30 +2,65 @@ package com.example.myword;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.*;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.Toast;
+
+import java.util.Locale;
 
 
-public class word_day extends AppCompatActivity {
+public class word_day extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_day);
 
-        int extra = getIntent().getIntExtra("UNIT", -1);
+        final int extra = getIntent().getIntExtra("UNIT", -1);
+        if(extra == -1) {
+            Toast.makeText(word_day.this, "ERROR", Toast.LENGTH_LONG).show();
+            finish();
+        }
+
+        menu.DBHelper helper = new menu.DBHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        String where = String.format(Locale.KOREA, "where unit == '%s' ", "Unit" + extra);
+        Cursor cursor = db.rawQuery("select distinct day " +
+                "from tb_word " +
+                where +
+                "order by _id asc",
+                null);
+        cursor.moveToFirst();
+
+        StringBuilder str = new StringBuilder(cursor.getString(0));
+        while(cursor.moveToNext())
+            str.append(" ").append(cursor.getString(0));
+
+        GridView gridView = (GridView) findViewById(R.id.day);
+        gridView.setOnItemClickListener(this);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                this,
+                R.layout.day_sub,
+                R.id.day_word,
+                str.toString().split(" ")
+        );
+        gridView.setAdapter(arrayAdapter);
+
+        cursor.close();
     }
 
-    public void dayClickListner(View v) {
-        Intent intent = new Intent(getApplicationContext(), word.class);
-        if (v.getId() == R.id.day1) {
-            startActivity(intent);
-        } else if (v.getId() == R.id.day2) {
-            startActivity(new Intent(getApplicationContext(), word.class));
-        }
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(this, word.class);
+        intent.putExtra("DAY", menu.DAY * (getIntent().getIntExtra("UNIT", -1) - 1) + i + 1);
+        startActivity(intent);
     }
 }

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:id="@+id/mainmenu">
+    android:id="@+id/MainMenu">
 
     <View
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="5dp"
-        android:onClick="menuClickListner" >
+        android:onClick="menuClickListener" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="5dp"
-        android:onClick="menuClickListner">
+        android:onClick="menuClickListener">
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
         android:layout_height="100dp"
         android:padding="5dp"
         android:id="@+id/menu3"
-        android:onClick="menuClickListner">
+        android:onClick="menuClickListener">
 
         <TextView
             android:layout_width="wrap_content"

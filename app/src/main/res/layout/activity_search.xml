@@ -75,7 +75,6 @@
             android:src="@drawable/change"
             android:layout_toLeftOf="@+id/star_word"
             android:layout_alignBottom="@+id/star_word" />
-
     </RelativeLayout>
 
     <ImageView
