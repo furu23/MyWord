@@ -26,5 +26,6 @@
     <string name="menu1">단어장</string>
     <string name="menu2">단어 퀴즈</string>
     <string name="menu3">검색</string>
+    <string name="menu4">즐겨찾기</string>
     <string name="day">day</string>
 </resources>

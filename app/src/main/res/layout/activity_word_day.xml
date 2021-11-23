@@ -10,8 +10,7 @@
         android:numColumns="2"
         android:layout_weight="1"
         android:layout_marginVertical="10dp"
-        android:gravity="center">
-    </GridView>
+        android:gravity="center"/>
 </LinearLayout>
 
 

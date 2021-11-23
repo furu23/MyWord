@@ -30,7 +30,7 @@ public class menu extends AppCompatActivity{
             String[] input = res.getStringArray(R.array.start_data);
 
             for(int i = 0; i < input.length; i++) {
-                db.execSQL("insert into tb_word (unit, day, english, sound, meaning) values (?, ?, ?, ?, ?)",
+                db.execSQL("insert into tb_word (star, unit, day, english, sound, meaning) values (0, ?, ?, ?, ?, ?)",
                         (String.format(Locale.KOREA, "Unit%d,Day%d," , i/UNIT + 1, i/ DAY + 1)
                                  + input[i]).split(","));
             }
@@ -47,6 +47,11 @@ public class menu extends AppCompatActivity{
             ;
         else if (v.getId() == R.id.menu3)
             startActivity(new Intent(getApplicationContext(), search.class));
+        else if (v.getId() == R.id.menu4) {
+            Intent intent = new Intent(this, word.class);
+            intent.putExtra("DAY", -1);
+            startActivity(intent);
+        }
     }
 
     public static class DBHelper extends SQLiteOpenHelper {
@@ -60,6 +65,7 @@ public class menu extends AppCompatActivity{
         public void onCreate(SQLiteDatabase db) {
             String wordSQL = "create table tb_word " +
                     "(_id integer primary key autoincrement, " +
+                    "star, " +
                     "unit, day, english, sound, meaning)";
             db.execSQL(wordSQL);
         }

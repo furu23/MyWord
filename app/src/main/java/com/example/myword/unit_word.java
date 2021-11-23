@@ -1,6 +1,8 @@
 package com.example.myword;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.*;
@@ -55,7 +57,7 @@ public class unit_word extends AppCompatActivity {
         layout.setLayoutParams(
                 new RelativeLayout.LayoutParams (
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    getDP(100)
+                    getPX(100, this)
             )
         );
         layout.setOnClickListener(view -> {
@@ -68,11 +70,11 @@ public class unit_word extends AppCompatActivity {
         return layout;
     }
 
-    private int getDP(int dp) {
+    public static int getPX(int dp, Context appContext) {
         return (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP,
                 (float) dp,
-                getApplicationContext().getResources().getDisplayMetrics()
+                appContext.getResources().getDisplayMetrics()
         );
     }
 
@@ -100,7 +102,7 @@ public class unit_word extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-        text_params.setMarginStart(getDP(15));
+        text_params.setMarginStart(getPX(15, this));
         text_params.addRule(RelativeLayout.CENTER_VERTICAL, 1);
         text.setLayoutParams(text_params);
         return text;
