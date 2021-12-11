@@ -10,19 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyWord">
         <activity
-            android:name="com.example.myword.word_day"
+            android:name=".Quiz"
             android:exported="true" />
         <activity
-            android:name="com.example.myword.search"
+            android:name=".word_day"
             android:exported="true" />
         <activity
-            android:name="com.example.myword.unit_word"
+            android:name=".search"
             android:exported="true" />
         <activity
-            android:name="com.example.myword.word"
+            android:name=".unit_word"
             android:exported="true" />
         <activity
-            android:name="com.example.myword.menu"
+            android:name=".word"
+            android:exported="true" />
+        <activity
+            android:name=".menu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

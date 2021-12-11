@@ -13,6 +13,7 @@ import android.view.View;
 import java.util.Locale;
 
 public class menu extends AppCompatActivity{
+    public static final int WORD = 20;
     public static final int UNIT = 4;
     public static final int DAY = 2;
 
@@ -43,8 +44,9 @@ public class menu extends AppCompatActivity{
     {
         if(v.getId() == R.id.menu1)
             startActivity(new Intent(getApplicationContext(), unit_word.class));
-        else if (v.getId() == R.id.menu2)
-            ;
+        else if (v.getId() == R.id.menu2) {
+            startActivity(new Intent(this, Quiz.class));
+        }
         else if (v.getId() == R.id.menu3)
             startActivity(new Intent(getApplicationContext(), search.class));
         else if (v.getId() == R.id.menu4) {
