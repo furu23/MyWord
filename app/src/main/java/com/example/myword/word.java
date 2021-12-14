@@ -29,20 +29,22 @@ public class word extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word);
 
+        Log.i("WORD", "WORD init");
+
         final int extra = getIntent().getIntExtra("DAY", -1);
 
         menu.DBHelper helper = new menu.DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor;
 
-        if(extra == -1) {
+        if(extra == -1) {       //즐겨찾기 기능 이용시 작동
             cursor = db.rawQuery("select _id, english, sound, meaning, star " +
                     "from tb_word " +
                     "where star == 1 " +
                     "order by _id asc", null);
         }
-        else {
-            String where = String.format(Locale.KOREA, "where day == '%s' ", "Day" + extra);    //db에서 단어내용 가져옴
+        else {                  //기본 접근
+            String where = String.format(Locale.KOREA, "where day == '%s' ", "Day" + extra);    //db 에서 단어내용 가져옴
             cursor = db.rawQuery("select _id, english, sound, meaning, star " +
                     "from tb_word " +
                     where +
@@ -121,8 +123,8 @@ public class word extends AppCompatActivity{
 
             //---------------------Listener----------------------
 
-            
-            sound.setOnClickListener(new View.OnClickListener() {
+            /** TTS 서비스는 AVD 혹은 실행할 기기에 Speech Services by Google 서비스가 깔려 있어야 함 **/
+            sound.setOnClickListener(new View.OnClickListener() {           //사운드 버튼 클릭시 음성 출력
                 @Override
                 public void onClick(View view) {
                     Log.i("WORD_INFO", "SOUND_CLICKED");        //tts 사용
@@ -156,7 +158,7 @@ public class word extends AppCompatActivity{
                 }
             });
 
-            change.setOnClickListener(new View.OnClickListener() {
+            change.setOnClickListener(new View.OnClickListener() {          //영단어, 뜻 위치 바꿔주는 기능
                 @Override
                 public void onClick(View view) {
                     Log.d("WORD_INFO", "CHANGE_CLICKED");
@@ -171,11 +173,12 @@ public class word extends AppCompatActivity{
             return convertView;
         }
 
+        /** TTS 서비스는 AVD 혹은 실행할 기기에 Speech Services by Google 서비스가 깔려 있어야 함 **/
         @Override
-        public void onInit(int i) {
+        public void onInit(int i) {                 //TTS 서비스 생명주기함수
             if(i == TextToSpeech.SUCCESS) {
                 tts.setLanguage(Locale.ENGLISH);
-                Log.i("TTS", "init succes");
+                Log.i("TTS", "init success");
             }
             else {
                 Log.i("TTS", "init failed");

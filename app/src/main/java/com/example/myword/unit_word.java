@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.*;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,9 @@ public class unit_word extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);                     //대응 layout xml 없음
+
+        Log.i("UNIT", "UNIT init");
 
         ScrollView scroll = new ScrollView(this);
         scroll.setLayoutParams(new ViewGroup.LayoutParams(

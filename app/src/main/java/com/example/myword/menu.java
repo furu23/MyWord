@@ -20,10 +20,11 @@ public class menu extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("MENU", "MENU init");
 
         SharedPreferences sp = getSharedPreferences("pref", MODE_PRIVATE);      //첫 실행에만 DB 생성
         if (sp.getBoolean("INIT", true)) {
-            Log.i("INFO_WORD", "First application start");
+            Log.i("MENU", "First start");
             DBHelper helper = new DBHelper(this);
             SQLiteDatabase db = helper.getWritableDatabase();
 
@@ -36,20 +37,27 @@ public class menu extends AppCompatActivity{
                                  + input[i]).split(","));
             }
             sp.edit().putBoolean("INIT", false).apply();
+            Log.i("MENU", "MAKING DB");
         }
         setContentView(R.layout.menuxml);
     }
 
     public void menuClickListener(View v)
     {
-        if(v.getId() == R.id.menu1)
+        if(v.getId() == R.id.menu1) {                   //단어장으로 연결
+            Log.i("MENU", "start unit");
             startActivity(new Intent(getApplicationContext(), unit_word.class));
-        else if (v.getId() == R.id.menu2) {
+        }
+        else if (v.getId() == R.id.menu2) {             //퀴즈로 연결
+            Log.i("MENU", "start Quiz");
             startActivity(new Intent(this, Quiz.class));
         }
-        else if (v.getId() == R.id.menu3)
+        else if (v.getId() == R.id.menu3) {             //검색으로 연결
+            Log.i("MENU", "start search");
             startActivity(new Intent(getApplicationContext(), search.class));
-        else if (v.getId() == R.id.menu4) {
+        }
+        else if (v.getId() == R.id.menu4) {             //즐겨찾기로 연결
+            Log.i("MENU", "start favor");
             Intent intent = new Intent(this, word.class);
             intent.putExtra("DAY", -1);
             startActivity(intent);

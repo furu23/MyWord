@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 public class showQuizFragment extends Fragment implements View.OnClickListener {
@@ -25,20 +26,16 @@ public class showQuizFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Log.i("QUIZ", "F1 ViewCreate");
+
         Bundle bundle = getArguments();
         int MOD = bundle.getInt("MOD", -1);
 
         menu.DBHelper dbHelper = new menu.DBHelper(getContext());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        int[] rand = new int[5];
-        for(int i = 0; i < 5; i++) {
-            rand[i] = (int) (Math.random() * menu.WORD);
-        }
 
         Button btn1 = getView().findViewById(R.id.btn1);
         Button btn2 = getView().findViewById(R.id.btn2);
@@ -148,24 +145,32 @@ public class showQuizFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), "정답입니다!", Toast.LENGTH_SHORT).show();
                 result++;
             }
+            else
+                Toast.makeText(getContext(), "오답입니다!", Toast.LENGTH_SHORT).show();
         }
         if(view.getId() == R.id.btn2) {
             if (answer == 1) {
                 Toast.makeText(getContext(), "정답입니다!", Toast.LENGTH_SHORT).show();
                 result++;
             }
+            else
+                Toast.makeText(getContext(), "오답입니다!", Toast.LENGTH_SHORT).show();
         }
         if(view.getId() == R.id.btn3) {
             if (answer == 2) {
                 Toast.makeText(getContext(), "정답입니다!", Toast.LENGTH_SHORT).show();
                 result++;
             }
+            else
+                Toast.makeText(getContext(), "오답입니다!", Toast.LENGTH_SHORT).show();
         }
         if(view.getId() == R.id.btn4) {
             if (answer == 3) {
                 Toast.makeText(getContext(), "정답입니다!", Toast.LENGTH_SHORT).show();
                 result++;
             }
+            else
+                Toast.makeText(getContext(), "오답입니다!", Toast.LENGTH_SHORT).show();
         }
         getActivity().finish();
     }

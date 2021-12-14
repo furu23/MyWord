@@ -9,8 +9,6 @@ import android.widget.Button;
 
 public class Quiz extends AppCompatActivity implements View.OnClickListener {
     private showQuizFragment f1;
-    private quizResultFragment f2;
-    private showListFragment f3;
 
     private Button btn1;
     private Button btn2;
@@ -22,6 +20,8 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        Log.i("QUIZ", "quiz init");
+
         btn1 = findViewById(R.id.quiz_eng);
         btn2 = findViewById(R.id.quiz_kor);
 
@@ -31,13 +31,11 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
         manager = getSupportFragmentManager();
 
         f1 = new showQuizFragment();
-        f2 = new quizResultFragment();
-        f3 = new showListFragment();
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.quiz_eng) {
+        if(view.getId() == R.id.quiz_eng) {             //영어 맞추기 기능
             Log.i("QUIZ", "button1 Clicked");
             btn1.setVisibility(View.GONE);
             btn2.setVisibility(View.GONE);
@@ -53,7 +51,8 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                 ft.commit();
             }
         }
-        else if (view.getId() == R.id.quiz_kor) {
+        else if (view.getId() == R.id.quiz_kor) {       //뜻 맞추기 기능
+            Log.i("QUIZ", "button2 Clicked");
             btn1.setVisibility(View.GONE);
             btn2.setVisibility(View.GONE);
 
@@ -68,17 +67,4 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
-
-    public void toFragTwo(){
-        f2.show(manager, null);
-    }
-
-    public class showListFragment extends ListFragment {
-        @Override
-        public void onViewCreated(View view, Bundle savedInstanceState) {
-            super.onViewCreated(view, savedInstanceState);
-
-        }
-    }
-
 }
