@@ -17,6 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -66,10 +68,11 @@ public class word extends AppCompatActivity{
         list.setAdapter(customAdapter);
     }
 
-    private class CustomAdapter extends ArrayAdapter<Drive> {
+    private class CustomAdapter extends ArrayAdapter<Drive> implements TextToSpeech.OnInitListener {
         Context context;
         int resId;
         ArrayList<Drive> data;
+        TextToSpeech tts = new TextToSpeech(word.this, this, TextToSpeech.Engine.ACTION_GET_SAMPLE_TEXT);
 
 
         public CustomAdapter(Context context, int resId, ArrayList<Drive> data){
@@ -87,15 +90,6 @@ public class word extends AppCompatActivity{
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            TextToSpeech tts;
-            tts = new TextToSpeech(word.this, new TextToSpeech.OnInitListener() {
-                @Override
-                public void onInit(int status) {
-                    if (status != TextToSpeech.ERROR) {
-                        Log.i("WORD_INFO", "TTS_INIT");
-                    }
-                }
-            });
 
 
             if(convertView == null) {
@@ -132,8 +126,7 @@ public class word extends AppCompatActivity{
                 @Override
                 public void onClick(View view) {
                     Log.i("WORD_INFO", "SOUND_CLICKED");        //tts 사용
-                    tts.setLanguage(Locale.ENGLISH);
-                    tts.speak("test", TextToSpeech.QUEUE_FLUSH, null, null);
+                    tts.speak(r.english, TextToSpeech.QUEUE_FLUSH, null, null);
                 }
             });
 
@@ -167,11 +160,27 @@ public class word extends AppCompatActivity{
                 @Override
                 public void onClick(View view) {
                     Log.d("WORD_INFO", "CHANGE_CLICKED");
+                    String tmp1 = english.getText().toString();
+                    String tmp2 = meaning.getText().toString();
+                    meaning.setText(tmp1);
+                    english.setText(tmp2);
                 }
             });
 
 
             return convertView;
+        }
+
+        @Override
+        public void onInit(int i) {
+            if(i == TextToSpeech.SUCCESS) {
+                tts.setLanguage(Locale.ENGLISH);
+                Log.i("TTS", "init succes");
+            }
+            else {
+                Log.i("TTS", "init failed");
+                Toast.makeText(getContext(), "NEED GOOGLE TTS SPEECH SERVICE", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
